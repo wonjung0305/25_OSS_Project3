@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">눌러보세요</button>
+    <div id="chcontent">기본 텍스트</div>
+
+    <script>
+      const btn1 = document.getElementById("btn");
+      const content1 = document.getElementById("chcontent");
+
+      // 익명 함수: 재사용이 안되는 함수
+      btn1.addEventListener("click", function () {
+        alert("버튼이 클릭되었습니다!");
+        content1.textContent = "버튼이 클릭되었습니다!";
+      });
+
+      /*
+
+      // 함수 선언은 보통 맨 위나, 관련 코드 가까이 둠 (addEventListener의 경우)
+      function clickMe(){
+        alert("Hello!");
+      }
+
+      // 함수에 괄호는 넣지 않음 (익명함수만)
+      btn1.addEventListener("click", clickMe);
+
+      function clickMe(){
+        content1.textContent = "버튼이 클릭되었습니다";
+      }
+      */
+
+      // innerText: 화면에 렌더링된 텍스트만 가져옴
+      // textContent: 요소 안의 모든 텍스트를 가져옴
+    </script>
+  </body>
+</html>
