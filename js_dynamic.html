@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="js_dynamic.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="whole-content">
+      <header>
+        <h1>Dynamic Web page</h1>
+      </header>
+
+      <div id="row-layout">
+        <input type="text" id="text-box" />
+        <div id="btn-coolection">
+          <input type="button" id="add-btn" value="추가" />
+          <input type="button" id="del-btn" value="삭제" />
+        </div>
+      </div>
+
+      <div id="word-wrap">
+        <ul id="word-list"></ul>
+      </div>
+    </div>
+
+    <script>
+      /*
+js에 익숙해지기 위해 내용을 더 추가함
+1. 추가/삭제할 내용이 없는 경우 (texts==="" || list.children.length ===0) alert로 경고
+*/
+
+      const user_input = document.getElementById("text-box");
+      const add_btn = document.getElementById("add-btn");
+      const del_btn = document.getElementById("del-btn");
+      const list = document.getElementById("word-list");
+
+      // 추가 버튼 누를 시 단어 추가
+      // 이때 , 로 나누고(split), trim으로 공백 정리하기
+
+      add_btn.addEventListener("click", function () {
+        const texts = user_input.value.trim(); // trim으로 공백 정리
+
+        // 내용이 없는 경우-> alert
+        if (texts === "") {
+          alert("추가할 내용이 없습니다.");
+          return;
+        }
+
+        // ,로 split 하고 단어 추가
+        const words = texts.split(",");
+
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i].trim(); // 공백 제거
+          if (word !== "") {
+            // 공백이 있거나 빈 문자열이면 스킵
+            const li = document.createElement("li");
+            li.textContent = word; // 만든 list에 단어 넣고
+            list.appendChild(li); // list에 넣음
+          }
+        }
+
+        user_input.value = ""; // 입력창 비우기
+      });
+
+      // 삭제 버튼
+      del_btn.addEventListener("click", function () {
+        // 빈 내용일 때 경고
+        if (list.children.length === 0) {
+          alert("삭제할 내용이 없습니다");
+        } else {
+          list.innerHTML = ""; // 안의 내용을 아예 초기화
+        }
+      });
+    </script>
+  </body>
+</html>
