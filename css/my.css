@@ -401,3 +401,7 @@
     row-gap: 20px;
   }
 }
+
+.util-nav #assignment:hover{
+  color: #82dc28;
+}
