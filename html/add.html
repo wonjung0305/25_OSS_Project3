@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/my.css" />
+    <link rel="stylesheet" href="../css/add.css" />
+
+    <script src="../js/add.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div id="first-line">
+          <a href="../index.html" id="OliveYoung">OLIVE YOUNG</a>
+
+          <form class="search-bar">
+            <input type="search" placeholder="상품, 브랜드, 성분 검색" />
+            <button type="submit">
+              <img src="../img/search-icon.png" alt="" />
+            </button>
+          </form>
+
+          <nav class="util-nav">
+            <a href="#">오늘드림</a>
+            <span class="divider"></span>
+            <a href="#">올영매장찾기</a>
+            <span class="divider"></span>
+            <a href="#">최근 본 상품</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- ------------------------- add 부분  ------------------------- -->
+
+      <main class="add-page">
+        <div class="wrap">
+          <h1>상품 등록</h1>
+
+          <form id="addForm" class="row g-3">
+            <div class="col-12 col-lg-6">
+              <label for="brand">브랜드<span>*</span></label>
+              <input
+                type="text"
+                id="brand"
+                name="brand"
+                maxlength="30"
+                placeholder="e.g. 라운드랩"
+              />
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="d-flex align-items-center flex-wrap gap-2 mb-1">
+                <label for="name" class="form-label mb-0"
+                  >상품명<span>*</span>
+                </label>
+                <small class="hint text-muted mb-0">2~50자</small>
+              </div>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="e.g.  라운드랩1025독도 토너 "
+                required
+                minlength="2"
+                maxlength="50"
+              />
+            </div>
+
+            <div class="col-12">
+              <label for="category">카테고리<span>*</span></label>
+              <select name="category" id="category" required>
+                <option value="" selected disabled>선택</option>
+                <option value="toner">스킨/토너</option>
+                <option value="serum">앰플/에센스/세럼</option>
+                <option value="lotion">로션</option>
+                <option value="cream">크림</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <label for="price">정상가(원)<span>*</span></label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                required
+                placeholder="e.g. 28000"
+                onwheel="this.blur()"
+              />
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="d-flex align-items-center flex-wrap gap-2 mb-1">
+                <label for="salePrice" class="form-label mb-0">할인가(원)</label>
+                <small class="hint text-muted mb-0">정상가 보다 적게 입력하세요</small>
+              </div>
+
+              <input
+                type="number"
+                id="salePrice"
+                name="salePrice"
+                placeholder="e.g. 17000"
+                onwheel="this.blur(); return false;"
+              />
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <label class="d-block">혜택</label>
+              <div class="d-flex align-items-center flex-wrap gap-3">
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="b-sale"
+                    name="benefit"
+                    value="sale"
+                  />
+                  <label for="b-sale" class="form-check-label">세일</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="b-coupon"
+                    name="benefit"
+                    value="coupon"
+                  />
+                  <label for="b-coupon" class="form-check-label">쿠폰</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="b-gift"
+                    name="benefit"
+                    value="gift"
+                  />
+                  <label for="b-gift" class="form-check-label">증정</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="b-today"
+                    name="benefit"
+                    value="today"
+                  />
+                  <label for="b-today" class="form-check-label">오늘드림</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <label class="d-block">대상 성별</label>
+              <div class="d-flex align-items-center flex-wrap gap-3">
+                <div class="form-check form-check-inline">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    name="gender"
+                    id="g-male"
+                    value="male"
+                    required
+                  />
+                  <label for="g-male" class="form-check-label">남성</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    name="gender"
+                    id="g-female"
+                    value="female"
+                  />
+                  <label for="g-female" class="form-check-label">여성</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="image">상품 이미지<span>*</span></label>
+              <input type="file" id="image" name="image" required />
+            </div>
+
+            <div class="col-12">
+              <label for="desc">상세설명 <span>*</span></label>
+              <textarea
+                name="desc"
+                id="desc"
+                required
+                minlength="10"
+                placeholder="제품 설명 10자 이상 작성해주세요"
+              ></textarea>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center gap-2">
+              <button type="submit" class="btn  mybtn-sub">
+                추가
+              </button>
+              <button type="reset" class="btn btn-outline-secondary mybtn-res">
+                초기화
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
