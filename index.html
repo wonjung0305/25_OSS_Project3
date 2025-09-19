@@ -1,272 +1,219 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>과제 링크 허브</title>
-  <style>
-    :root {
-      --yellow: #ffd400; /* 포인트 컬러 */
-      --black: #111111;
-      --white: #ffffff;
-      --gray-1: #f6f6f6;
-      --gray-2: #e9e9e9;
-      --gray-3: #9b9b9b;
-      --shadow: 0 6px 20px rgba(0,0,0,0.12);
-      --radius: 18px;
-    }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olive Young 예시</title>
+    <link rel="stylesheet" href="./css/my.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!--https://www.oliveyoung.co.kr/store/display/getMCategoryList.do?dispCatNo=100000100010013&isLoginCnt=0&aShowCnt=0&bShowCnt=0&cShowCnt=0&gateCd=Drawer&trackingCd=Cat100000100010013_MID&trackingCd=Cat100000100010013_MID&t_page=%EB%93%9C%EB%A1%9C%EC%9A%B0_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC&t_click=%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%ED%83%AD_%EC%A4%91%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC&t_1st_category_type=%EB%8C%80_%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4&t_2nd_category_type=%EC%A4%91_%EC%8A%A4%ED%82%A8%2F%ED%86%A0%EB%84%88-->
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.5;
-    }
+    <div class="wrapper">
+      <header>
+        <div id="first-line">
+          <a href="index.html" id="OliveYoung">OLIVE YOUNG</a>
 
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 28px 20px 64px;
-    }
+          <form class="search-bar">
+            <input type="search" placeholder="상품, 브랜드, 성분 검색" />
+            <button type="submit">
+              <img src="./img/search-icon.png" alt="" />
+            </button>
+          </form>
 
-    /* 헤더 */
-    header {
-      position: sticky; top: 0; z-index: 10;
-      backdrop-filter: blur(6px);
-      background: rgba(255,255,255,0.7);
-      border-bottom: 1px solid var(--gray-2);
-    }
+          <nav class="util-nav">
+            <a href="#">오늘드림</a>
+            <span class="divider"></span>
+            <a href="#">올영매장찾기</a>
+            <span class="divider"></span>
+            <a href="js_dynamic.html" id="assignment">동적 페이지 과제</a>
+          </nav>
+        </div>
+      </header>
 
-    .brand {
-      display: flex; align-items: center; gap: 14px;
-      padding: 16px 20px;
-    }
-    .logo {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--yellow);
-      box-shadow: inset 0 0 0 3px var(--black);
-    }
-    .title {
-      font-size: 20px; font-weight: 700;
-    }
+      <main>
+        <div class="bar">
+          <div class="bar-inner">
+            <ul class="sort-tabs">
+              <li class="active"><a href="#">인기순</a></li>
+              <li class="divider"></li>
+              <li><a href="#">신상품순</a></li>
+              <li class="divider"></li>
+              <li><a href="#">판매순</a></li>
+              <li class="divider"></li>
+              <li><a href="#">낮은 가격순</a></li>
+              <li class="divider"></li>
+              <li><a href="#">할인율순</a></li>
+            </ul>
+          </div>
 
-    /* 인트로 카드 */
-    .intro {
-      margin-top: 20px;
-      background: var(--gray-1);
-      border: 1px solid var(--black);
-      border-radius: var(--radius);
-      padding: 22px;
-      display: grid; gap: 14px;
-      box-shadow: var(--shadow);
-    }
-    .intro h1 { font-size: 26px; margin: 0 0 6px; }
-    .intro .meta { display: grid; gap: 6px; }
-    .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-    .label {
-      font-size: 12px; font-weight: 700; letter-spacing: .04em;
-      padding: 2px 8px; border-radius: 999px; border: 1px solid var(--black);
-      background: var(--yellow);
-    }
-    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill {
-      padding: 6px 10px; border: 1px dashed var(--black); border-radius: 999px;
-      background: var(--white);
-      font-size: 13px; font-weight: 600;
-    }
 
-    /* 툴바 */
-    .toolbar {
-      margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px;
-      align-items: center;
-    }
-    .field {
-      display: flex; align-items: center; gap: 8px; background: var(--white);
-      border: 1px solid var(--black); border-radius: 10px; padding: 8px 10px;
-    }
-    .field input, .field select {
-      border: none; outline: none; background: transparent; font-size: 14px;
-    }
-    .btn {
-      border: 1px solid var(--black); background: var(--yellow); font-weight: 700;
-      padding: 8px 14px; border-radius: 10px; cursor: pointer;
-    }
-    .btn:active { transform: translateY(1px); }
-
-    /* 카드 그리드 */
-    .grid {
-      margin-top: 22px;
-      display: grid; gap: 16px;
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-    @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (min-width: 980px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-
-    .card {
-      position: relative;
-      display: flex; flex-direction: column; gap: 10px;
-      border: 1.2px solid var(--black);
-      border-radius: var(--radius);
-      padding: 16px;
-      background: var(--white);
-      transition: transform .1s ease, box-shadow .1s ease;
-    }
-    .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-    .chip-row { display: flex; gap: 6px; flex-wrap: wrap; }
-    .chip { font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--black); background: var(--gray-1); }
-    .card h3 { margin: 4px 0 2px; font-size: 18px; }
-    .desc { color: #333; font-size: 14px; }
-
-    .card a {
-      margin-top: auto;
-      align-self: flex-start;
-      text-decoration: none; color: var(--black);
-      border: 1px solid var(--black); border-radius: 10px; padding: 8px 10px;
-      background: var(--yellow); font-weight: 700;
-    }
-
-    footer { margin: 36px 0 0; padding-top: 16px; color: var(--gray-3); font-size: 12px; text-align: center; }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <div class="title">과제 링크 허브</div>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- 소개 -->
-    <section class="intro" aria-labelledby="intro-title">
-      <div>
-        <h1 id="intro-title">김원중 • 2주차 과제</h1>
-        <div class="meta">
-          <div class="row"><span class="label">이름</span><strong id="student-name">김원중</strong></div>
-          <div class="row"><span class="label">학번</span><strong id="student-id">2200145</strong></div>
-          <div class="row" aria-label="사용 언어">
-            <span class="label">사용 가능 언어</span>
-            <div class="skill-list" id="skills">
-              <span class="skill">C</span>
-              <span class="skill">C++</span>
-              <span class="skill">Java</span>
-              <span class="skill">Python</span>
-              <span class="skill">HTML</span>
-              <span class="skill">CSS</span>
-              <span class="skill">JavaScript</span>
-            </div>
+          <div class="add-btn">
+            <a href="/html/add.html">상품 등록하기</a>
           </div>
         </div>
-      </div>
 
-      <!-- 간단 필터/검색 툴바 -->
-      <div class="toolbar" role="region" aria-label="과제 검색과 필터">
-        <div class="field" role="search">
-          <span>검색</span>
-          <input id="q" type="search" placeholder="제목/설명 검색" aria-label="검색어" />
-        </div>
-        <div class="field">
-          <span>언어</span>
-          <select id="langFilter" aria-label="언어 필터">
-            <option value="all">모두</option>
-            <option>C</option>
-            <option>C++</option>
-            <option>Java</option>
-            <option>Python</option>
-            <option>HTML</option>
-            <option>CSS</option>
-            <option>JavaScript</option>
-          </select>
-        </div>
-        <button class="btn" id="resetBtn" type="button">초기화</button>
-      </div>
-    </section>
+        <section class="goods">
+          <div class="goods-row">
+            <div class="goods-grid">
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/bio.jpg" alt=""
+                /></a>
+                <p class="brand">바이오더마</p>
+                <p>
+                  <a href="/html/view.html"
+                    >바이오더마 하이드라비오 토너 500ml 2입 기획</a
+                  >
+                </p>
+                <div class="price">
+                  <p class="not-sale">59,000원</p>
+                  <p class="on-sale">39,900원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/stra.jpg" alt=""
+                /></a>
+                <p class="brand">에스트라</p>
+                <a href="/html/view.html"
+                  >에스트라 에이시카365 수분토너 pH4.5 200ml</a
+                >
+                <div class="price">
+                  <p class="not-sale">28,000원</p>
+                  <p class="on-sale">21,170원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="coupon icon">쿠폰</div>
+                  <div class="plus icon">증정</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/bring.jpg" alt=""
+                /></a>
+                <p class="brand">브링그린</p>
+                <a href="/html/view.html"
+                  >[피지쓱싹]브링그린 티트리시카수딩토너 250ml/500ml</a
+                >
+                <div class="price">
+                  <p class="not-sale">15,000원</p>
+                  <p class="on-sale">13,500원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/round.jpg" alt=""
+                /></a>
+                <p class="brand">라운드랩</p>
+                <a href="/html/view.html"
+                  >[1등토너]라운드랩1025독도 토너 500ml기획(+100ml)</a
+                >
+                <div class="price">
+                  <p class="not-sale">30,000원</p>
+                  <p class="on-sale">27,000원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+            </div>
+          </div>
 
-    <!-- 카드 그리드 -->
-    <section aria-labelledby="list-title">
-      <h2 id="list-title" style="position:absolute; left:-9999px;">과제 목록</h2>
-      <div id="grid" class="grid"></div>
-    </section>
+          <div class="goods-row">
+            <div class="goods-grid">
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/anua.jpg" alt=""
+                /></a>
+                <p class="brand">아누아</p>
+                <p>
+                  <a href="/html/view.html">아누아 피디알엔 100히알루론산 토너</a>
+                </p>
+                <div class="price">
+                  <p class="not-sale">25,000원</p>
+                  <p class="on-sale">16,900원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/stra.jpg" alt=""
+                /></a>
+                <p class="brand">에스트라</p>
+                <a href="/html/view.html"
+                  >에스트라 에이시카365 수분토너 pH4.5 200ml</a
+                >
 
-    <footer>© <span id="year"></span> 김원중. OSS 과제용 페이지.</footer>
-  </main>
-
-  <script>
-    // ====== 데이터: 여기만 수정하면 카드 내용이 바뀝니다 ======
-    const assignments = [
-      {
-        title: "Lab1: js를 활용한 동적페이지 생성",
-        desc: "html,css,js 사용",
-        url: "js_dynamic.html",
-        langs: ["HTML","CSS", "JSS"]
-      },
-      {
-        title: "Lab2: form1_css",
-        desc: "form1에 CSS를 적용",
-        url: "form1_css.html",
-        langs: ["HTML", "CSS"]
-      }
-    
-    ];
-
-    // ====== 유틸 ======
-    const $ = (sel, el = document) => el.querySelector(sel);
-    const $$ = (sel, el = document) => Array.from(el.querySelectorAll(sel));
-
-    // ====== 렌더러 ======
-    function render(list) {
-      const grid = $("#grid");
-      grid.innerHTML = "";
-      if (!list.length) {
-        grid.innerHTML = `<div style="opacity:.7">조건에 맞는 과제가 없습니다.</div>`;
-        return;
-      }
-      const frag = document.createDocumentFragment();
-      list.forEach(item => {
-        const card = document.createElement("article");
-        card.className = "card";
-        card.innerHTML = `
-          <div class="chip-row">${item.langs.map(l => `<span class="chip">${l}</span>`).join("")}</div>
-          <h3>${item.title}</h3>
-          <p class="desc">${item.desc}</p>
-          <a href="${item.url}" target="_blank" rel="noopener">열기</a>
-        `;
-        frag.appendChild(card);
-      });
-      grid.appendChild(frag);
-    }
-
-    // ====== 필터 & 검색 ======
-    function applyFilter() {
-      const q = $("#q").value.trim().toLowerCase();
-      const lf = $("#langFilter").value;
-      const filtered = assignments.filter(a => {
-        const textHit = `${a.title} ${a.desc}`.toLowerCase().includes(q);
-        const langHit = (lf === "all") || a.langs.includes(lf);
-        return textHit && langHit;
-      });
-      render(filtered);
-    }
-
-    // ====== 이벤트 바인딩 ======
-    $("#q").addEventListener("input", applyFilter);
-    $("#langFilter").addEventListener("change", applyFilter);
-    $("#resetBtn").addEventListener("click", () => {
-      $("#q").value = "";
-      $("#langFilter").value = "all";
-      render(assignments);
-    });
-
-    // ====== 초기 렌더 ======
-    $("#year").textContent = new Date().getFullYear();
-    render(assignments);
-
-    // ====== 사용자 정보 커스터마이즈(원하면 직접 수정) ======
-    // $("#student-name").textContent = "본인 이름";
-    // $("#student-id").textContent = "본인 학번";
-  </script>
-</body>
+                <div class="price">
+                  <p class="not-sale">28,000원</p>
+                  <p class="on-sale">21,170원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="coupon icon">쿠폰</div>
+                  <div class="plus icon">증정</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/bring.jpg" alt=""
+                /></a>
+                <p class="brand">브링그린</p>
+                <a href="/html/view.html"
+                  >[피지쓱싹]브링그린 티트리시카수딩토너 250ml/500ml</a
+                >
+                <div class="price">
+                  <p class="not-sale">15,000원</p>
+                  <p class="on-sale">13,500원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+              <article class="good">
+                <a class="click_img" href="/html/view.html"
+                  ><img src="./img/round.jpg" alt=""
+                /></a>
+                <p class="brand">라운드랩</p>
+                <a href="/html/view.html"
+                  >[1등토너]라운드랩1025독도 토너 500ml기획(+100ml)</a
+                >
+                <div class="price">
+                  <p class="not-sale">30,000원</p>
+                  <p class="on-sale">27,000원</p>
+                </div>
+                <div class="icon-row">
+                  <div class="sale icon">세일</div>
+                  <div class="today icon">오늘드림</div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
