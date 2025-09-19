@@ -59,8 +59,11 @@
   word-break: keep-all;
 }
 
-img{
-  width: 480px;
+.product-page .media img{
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 480px;
 }
 
 

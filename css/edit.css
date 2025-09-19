@@ -1,0 +1,124 @@
+.edit-page .wrap{
+  max-width: 1020px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+/* 제목 */
+.edit-page h1{
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* form input 공통 디자인*/
+.edit-page #editForm input[type="text"],
+.edit-page #editForm input[type="number"],
+.edit-page #editForm input[type="file"],
+.edit-page #editForm select,
+.edit-page #editForm textarea{
+  width: 100%;
+  padding: 10px 12px;
+  
+  font-size: 14px;
+  
+  border: 1px solid #9bce26;
+  border-radius: 8px;
+
+  background-color: white;
+
+  outline: none;
+}
+
+.edit-page #editForm label{
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.edit-page #editForm .hint{
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.edit-page #editForm textarea{
+  box-sizing: border-box;
+
+  min-height: 140px;
+  height: 180px;
+  resize: none;
+
+  overflow-y: auto; /* 넘치면 스크롤 되도록*/
+}
+
+.form-check-input{
+  vertical-align: middle;
+}
+
+.form-check-label{
+  vertical-align: middle;
+}
+
+form span{
+  color: #ff6200;
+}
+
+/* 체크박스 */
+#b-sale:checked + label{
+  color: white;
+  background-color: #f65c60;
+  border-radius: 999px;
+  
+  font-size: 14px;
+  padding: 0px 6px ;
+
+}
+
+#b-coupon:checked + label{
+  color: white;
+  background-color: #9bce26;
+  border-radius: 999px;
+  
+  font-size: 14px;
+  padding: 0px 6px ;
+
+}
+
+#b-gift:checked + label{
+  color: white;
+  background-color: #6fcff7;
+  border-radius: 999px;
+  
+  font-size: 14px;
+  padding: 0px 6px ;
+
+}
+
+#b-today:checked + label{
+  color: white;
+  background-color: #f374b7;
+  border-radius: 999px;
+  
+  font-size: 14px;
+  padding: 0px 6px ;
+
+}
+
+/* 마지막 버튼*/
+.mybtn-mod{
+  color: white;
+  background-color: #9bce26;
+
+}
+
+.mybtn-mod:hover{
+  color: black;
+  background-color: #81ab1f;
+}
+
+.mybtn-res{
+  background-color: #f374b7;
+  color: white;
+  border: 1px solid #f374b7;
+}
