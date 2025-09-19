@@ -90,7 +90,7 @@ window.onload = function () {
 
     // 검증 통과할 경우 -> 추가 된다고 alert
     alert("게시물이 추가됩니다.");
-    form.reset();
+    location.href = "../index.html";
   });
 
 };
